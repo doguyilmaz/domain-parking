@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Domain for Sale</title> <!-- Default, will be updated by JS -->
+    <meta name="description" content="This premium domain name is available for purchase. Secure your online presence today.">
+    <link rel="canonical" href="/">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0f172a">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Premium Domain for Sale">
+    <meta property="og:description" content="This premium domain name is available for purchase. Secure your online presence today.">
+    <meta property="og:url" content="/">
+    
+    <!-- Inline Critical CSS for Performance -->
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --text-color: #f8fafc;
+            --accent-color: #6366f1;
+            --accent-glow: rgba(99, 102, 241, 0.5);
+            --glass-bg: rgba(30, 41, 59, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            background: radical-gradient(circle at top left, #1e1b4b, #0f172a);
+        }
+
+        /* Ambient Background Glow */
+        .glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+            animation: float 10s ease-in-out infinite;
+        }
+        .glow:nth-child(1) { top: -200px; left: -200px; }
+        .glow:nth-child(2) { bottom: -200px; right: -200px; background: radial-gradient(circle, rgba(236, 72, 153, 0.3) 0%, transparent 70%); }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, 50px); }
+        }
+
+        main {
+            width: 100%;
+            max-width: 800px;
+            padding: 2rem;
+            box-sizing: border-box;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 4rem 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 800;
+            margin: 0 0 1rem;
+            background: linear-gradient(to right, #fff, #cbd5e1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            word-break: break-all;
+            line-height: 1.1;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.2);
+            color: #818cf8;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+
+        p.description {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: #94a3b8;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-color) 0%, #4f46e5 100%);
+            color: white;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            font-size: 1.125rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.5);
+            filter: brightness(1.1);
+        }
+        
+        .cta-button:focus {
+            outline: 3px solid var(--accent-glow);
+            outline-offset: 2px;
+        }
+
+        footer {
+            margin-top: 3rem;
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+
+        a.contact-link {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a.contact-link:hover {
+            color: var(--text-color);
+        }
+        
+        /* Accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="glow"></div>
+    <div class="glow"></div>
+
+    <main>
+        <article class="card">
+            <div class="status-badge">Available for Sale</div>
+            <h1 id="domain-name" class="skeleton">This Domain</h1>
+            <p class="description">
+                This premium digital asset is ready for development. Secure this brandable domain for your business or project today.
+            </p>
+            <a href="mailto:hello@doguyilmaz.com" class="cta-button" id="contact-btn">
+                Inquire Now
+            </a>
+            <footer>
+                <p>Protected by Domain Shield &bull; <a href="mailto:hello@doguyilmaz.com" class="contact-link">Contact Owner</a></p>
+            </footer>
+        </article>
+    </main>
+
+    <script type="application/ld+json" id="schema-script">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Premium Domain Name",
+      "description": "Premium domain name available for acquisition.",
+      "brand": {
+        "@type": "Brand",
+        "name": "DomainMarket"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "/",
+        "priceCurrency": "USD",
+        "price": "1000.00", 
+        "availability": "https://schema.org/InStock",
+        "seller": {
+            "@type": "Person",
+            "email": "hello@doguyilmaz.com"
+        }
+      }
+    }
+    </script>
+
+    <script>
+        (function() {
+            // Get the current hostname
+            const hostname = window.location.hostname.replace(/^www\./, '');
+            
+            // Updates
+            document.title = `${hostname} is available for sale!`;
+            
+            // H1 Update
+            const h1 = document.getElementById('domain-name');
+            h1.textContent = hostname;
+            h1.classList.remove('skeleton'); // In case we used skeleton loading class
+            
+            // Contact Button Subject Line
+            const contactBtn = document.getElementById('contact-btn');
+            contactBtn.href = `mailto:hello@doguyilmaz.com?subject=Inquiry about ${hostname}`;
+
+            // Meta Description Update
+            const metaDesc = document.querySelector('meta[name="description"]');
+            if(metaDesc) {
+                metaDesc.setAttribute("content", `${hostname} is a premium domain name currently available for purchase. Contact us to acquire this asset.`);
+            }
+
+            // Open Graph Updates
+            const ogTitle = document.querySelector('meta[property="og:title"]');
+            if(ogTitle) ogTitle.setAttribute("content", `${hostname} - Available for Purchase`);
+            
+            const ogUrl = document.querySelector('meta[property="og:url"]');
+            if(ogUrl) ogUrl.setAttribute("content", window.location.href);
+
+            // Schema.org logic
+            try {
+                const schemaScript = document.getElementById('schema-script');
+                const schemaData = JSON.parse(schemaScript.textContent);
+                schemaData.name = hostname;
+                schemaData.offers.url = window.location.href;
+                schemaScript.textContent = JSON.stringify(schemaData);
+            } catch (e) {
+                console.error("Schema update failed", e);
+            }
+        })();
+    </script>
+</body>
+</html>
