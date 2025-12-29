@@ -1,5 +1,11 @@
 # Premium Parking Page
 
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=flat&logo=html5&logoColor=white)
+![Lighthouse](https://img.shields.io/badge/lighthouse-100%2F100-success)
+
+![Premium Domain Preview](./assets/preview.png)
+
 A high-performance, single-file domain parking page designed for speed (100/100 Lighthouse), accessibility, and SEO.
 
 ## Features
