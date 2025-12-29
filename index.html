@@ -1,265 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Domain for Sale</title> <!-- Default, will be updated by JS -->
-    <meta name="description" content="This premium domain name is available for purchase. Secure your online presence today.">
+    <title>Premium Domain</title>
+    <meta name="description" content="This domain is available for acquisition.">
     <link rel="canonical" href="/">
     <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#0f172a">
+    <meta name="theme-color" content="#ffffff">
 
-    <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Premium Domain for Sale">
-    <meta property="og:description" content="This premium domain name is available for purchase. Secure your online presence today.">
+    <meta property="og:title" content="Domain for Sale">
+    <meta property="og:description" content="This premium domain is available for acquisition.">
     <meta property="og:url" content="/">
-    
-    <!-- Inline Critical CSS for Performance -->
+
     <style>
+        /* Reset & Base */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         :root {
-            --bg-color: #0f172a;
-            --text-color: #f8fafc;
-            --accent-color: #6366f1;
-            --accent-glow: rgba(99, 102, 241, 0.5);
-            --glass-bg: rgba(30, 41, 59, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --bg: #ffffff;
+            --fg: #000000;
+            --gray-100: #f5f5f7;
+            --gray-200: #e5e5e5;
+            --gray-500: #737373;
+            --accent: #2563eb;
+            /* Professional Blue */
+            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #000000;
+                --fg: #ffffff;
+                --gray-100: #111111;
+                --gray-200: #333333;
+                --gray-500: #a1a1aa;
+                --accent: #3b82f6;
+            }
         }
 
         body {
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            min-height: 100vh;
+            font-family: var(--font-sans);
+            background-color: var(--bg);
+            color: var(--fg);
+            line-height: 1.5;
+            height: 100vh;
+            /* Use d-vh for mobile browsers if supported, fallback to 100vh */
+            min-height: -webkit-fill-available;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            /* Prevent accidental scroll on simpler views */
+        }
+
+        /* Ambient Background Grid - Clean, Tech feel */
+        .bg-grid {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background-image:
+                linear-gradient(to right, var(--gray-200) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--gray-200) 1px, transparent 1px);
+            background-size: 40px 40px;
+            mask-image: radial-gradient(circle at center, black, transparent 80%);
+            -webkit-mask-image: radial-gradient(circle at center, black, transparent 80%);
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        /* Layout */
+        main {
+            flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            overflow-x: hidden;
-            background: radical-gradient(circle at top left, #1e1b4b, #0f172a);
-        }
-
-        /* Ambient Background Glow */
-        .glow {
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: -1;
-            animation: float 10s ease-in-out infinite;
-        }
-        .glow:nth-child(1) { top: -200px; left: -200px; }
-        .glow:nth-child(2) { bottom: -200px; right: -200px; background: radial-gradient(circle, rgba(236, 72, 153, 0.3) 0%, transparent 70%); }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(30px, 50px); }
-        }
-
-        main {
-            width: 100%;
-            max-width: 800px;
             padding: 2rem;
-            box-sizing: border-box;
-            text-align: center;
+            position: relative;
             z-index: 1;
+            width: 100%;
+            max-width: 100%;
         }
 
-        .card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 4rem 2rem;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
+        .container {
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
         }
 
+        /* Typography */
         h1 {
-            font-size: clamp(2rem, 5vw, 4rem);
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
             font-weight: 800;
-            margin: 0 0 1rem;
-            background: linear-gradient(to right, #fff, #cbd5e1);
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(180deg, var(--fg) 0%, var(--gray-500) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            word-break: break-all;
-            line-height: 1.1;
+            /* Fallback */
+            color: var(--fg);
         }
 
-        .status-badge {
-            display: inline-block;
-            background: rgba(99, 102, 241, 0.2);
-            color: #818cf8;
-            padding: 0.5rem 1rem;
-            border-radius: 9999px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            border: 1px solid rgba(99, 102, 241, 0.3);
-        }
-
-        p.description {
+        p.subtitle {
             font-size: 1.25rem;
-            line-height: 1.6;
-            color: #94a3b8;
+            color: var(--gray-500);
             margin-bottom: 3rem;
-            max-width: 600px;
+            font-weight: 400;
+            max-width: 80%;
             margin-left: auto;
             margin-right: auto;
         }
 
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--accent-color) 0%, #4f46e5 100%);
-            color: white;
-            font-weight: 700;
+        /* Action */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--fg);
+            color: var(--bg);
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 0.875rem 2rem;
+            border-radius: 9999px;
             text-decoration: none;
-            padding: 1rem 2.5rem;
-            border-radius: 12px;
-            font-size: 1.125rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.4);
-            border: none;
-            cursor: pointer;
+            transition: transform 0.2s, opacity 0.2s;
+            border: 1px solid var(--fg);
         }
 
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.5);
-            filter: brightness(1.1);
-        }
-        
-        .cta-button:focus {
-            outline: 3px solid var(--accent-glow);
-            outline-offset: 2px;
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
         }
 
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        /* Footer / Trust */
         footer {
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            width: 100%;
+        }
+
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
             margin-top: 3rem;
-            color: #64748b;
             font-size: 0.875rem;
+            color: var(--gray-500);
+            flex-wrap: wrap;
         }
 
-        a.contact-link {
-            color: #94a3b8;
-            text-decoration: none;
-            transition: color 0.2s;
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        a.contact-link:hover {
-            color: var(--text-color);
+        .feature-icon {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
         }
-        
-        /* Accessibility */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
+
+        a.link {
+            color: inherit;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        /* Utils */
+        .hidden {
+            display: none;
         }
     </style>
 </head>
+
 <body>
-    <div class="glow"></div>
-    <div class="glow"></div>
+    <div class="bg-grid"></div>
 
     <main>
-        <article class="card">
-            <div class="status-badge">Available for Sale</div>
-            <h1 id="domain-name" class="skeleton">This Domain</h1>
-            <p class="description">
-                This premium digital asset is ready for development. Secure this brandable domain for your business or project today.
-            </p>
-            <a href="mailto:hello@doguyilmaz.com" class="cta-button" id="contact-btn">
-                Inquire Now
+        <div class="container">
+            <h1 id="domain-name">...</h1>
+            <p class="subtitle">This premium domain is currently parked and available for acquisition.</p>
+
+            <a href="mailto:hello@doguyilmaz.com" class="btn" id="contact-btn">
+                Make an Offer
             </a>
-            <footer>
-                <p>Protected by Domain Shield &bull; <a href="mailto:hello@doguyilmaz.com" class="contact-link">Contact Owner</a></p>
-            </footer>
-        </article>
+
+            <div class="features">
+                <div class="feature-item">
+                    <svg class="feature-icon" viewBox="0 0 24 24">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                    </svg>
+                    <span>Secure Transfer</span>
+                </div>
+                <div class="feature-item">
+                    <svg class="feature-icon" viewBox="0 0 24 24">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                    </svg>
+                    <span>Verified Owner</span>
+                </div>
+                <div class="feature-item">
+                    <svg class="feature-icon" viewBox="0 0 24 24">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                    </svg>
+                    <span>Instant Response</span>
+                </div>
+            </div>
+        </div>
     </main>
+
+    <footer>
+        <p>&copy; <span id="year"></span> &bull; <a href="mailto:hello@doguyilmaz.com" class="link">Contact</a></p>
+    </footer>
 
     <script type="application/ld+json" id="schema-script">
     {
       "@context": "https://schema.org",
       "@type": "Product",
-      "name": "Premium Domain Name",
+      "name": "Domain Name",
       "description": "Premium domain name available for acquisition.",
-      "brand": {
-        "@type": "Brand",
-        "name": "DomainMarket"
-      },
       "offers": {
         "@type": "Offer",
-        "url": "/",
+        "price": "0",
         "priceCurrency": "USD",
-        "price": "1000.00", 
-        "availability": "https://schema.org/InStock",
-        "seller": {
-            "@type": "Person",
-            "email": "hello@doguyilmaz.com"
-        }
+        "availability": "https://schema.org/InStock"
       }
     }
     </script>
 
     <script>
-        (function() {
-            // Get the current hostname
+        (function () {
+            // Dynamic Data
             const hostname = window.location.hostname.replace(/^www\./, '');
-            
-            // Updates
-            document.title = `${hostname} is available for sale!`;
-            
-            // H1 Update
+            const currentYear = new Date().getFullYear();
+
+            // DOM Elements
             const h1 = document.getElementById('domain-name');
-            h1.textContent = hostname;
-            h1.classList.remove('skeleton'); // In case we used skeleton loading class
-            
-            // Contact Button Subject Line
             const contactBtn = document.getElementById('contact-btn');
-            contactBtn.href = `mailto:hello@doguyilmaz.com?subject=Inquiry about ${hostname}`;
+            const yearSpan = document.getElementById('year');
+            const title = document.querySelector('title');
 
-            // Meta Description Update
-            const metaDesc = document.querySelector('meta[name="description"]');
-            if(metaDesc) {
-                metaDesc.setAttribute("content", `${hostname} is a premium domain name currently available for purchase. Contact us to acquire this asset.`);
-            }
+            // Set Content
+            h1.textContent = hostname || 'Domain Name';
+            yearSpan.textContent = currentYear;
+            title.textContent = `${hostname} is for sale`;
+            contactBtn.href = `mailto:hello@doguyilmaz.com?subject=Offer for ${hostname}`;
 
-            // Open Graph Updates
-            const ogTitle = document.querySelector('meta[property="og:title"]');
-            if(ogTitle) ogTitle.setAttribute("content", `${hostname} - Available for Purchase`);
-            
-            const ogUrl = document.querySelector('meta[property="og:url"]');
-            if(ogUrl) ogUrl.setAttribute("content", window.location.href);
+            // SEO & Schema
+            document.querySelector('meta[name="description"]').setAttribute('content', `The domain ${hostname} is available for sale. Secure this brandable asset today.`);
+            document.querySelector('meta[property="og:title"]').setAttribute('content', `${hostname} - Premium Domain`);
 
-            // Schema.org logic
             try {
-                const schemaScript = document.getElementById('schema-script');
-                const schemaData = JSON.parse(schemaScript.textContent);
-                schemaData.name = hostname;
-                schemaData.offers.url = window.location.href;
-                schemaScript.textContent = JSON.stringify(schemaData);
-            } catch (e) {
-                console.error("Schema update failed", e);
+                const schema = JSON.parse(document.getElementById('schema-script').textContent);
+                schema.name = hostname;
+                document.getElementById('schema-script').textContent = JSON.stringify(schema);
+            } catch (e) { }
+
+            // Prevent scroll on desktop if content fits
+            function checkScroll() {
+                if (document.body.scrollHeight <= window.innerHeight) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = 'auto';
+                }
             }
+            window.addEventListener('resize', checkScroll);
+            checkScroll(); // Initial check
         })();
     </script>
 </body>
+
 </html>
