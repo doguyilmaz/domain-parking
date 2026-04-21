@@ -33,10 +33,11 @@
             /* Subtle Off-White */
             --fg: #000000;
 
-            /* Grid Color for Light Mode (10% Black) */
-            --gray-200: #000000;
-            --grid-opacity: 0.12;
-            /* 12% Opacity - Subtle but visible */
+            /* Grid Color for Light Mode — neutral gray instead of pure black so lines don't read as inky */
+            --gray-200: #525252;
+            --grid-opacity: 0.22;
+            /* Hover-glow color — darker than ambient so the cursor highlight pops */
+            --grid-glow-color: #171717;
 
             --gray-gradient: #737373;
             /* Professional Blue used inline / gradients now */
@@ -47,9 +48,11 @@
             :root {
                 --bg: #000000;
                 --fg: #ffffff;
-                /* Grid Color for Dark Mode (Dark Gray) */
-                --gray-200: #333333;
-                --grid-opacity: 0.15;
+                /* Grid Color for Dark Mode — lighter base so lines lift off the black bg */
+                --gray-200: #ffffff;
+                --grid-opacity: 0.12;
+                /* Hover-glow color — pure white for dark mode */
+                --grid-glow-color: #ffffff;
                 --gray-gradient: #a1a1aa;
             }
         }
@@ -84,6 +87,23 @@
             pointer-events: none;
         }
 
+        /* Cursor-reactive grid highlight — brightens grid lines under the pointer */
+        @media (hover: hover) {
+            .bg-grid-glow {
+                position: fixed;
+                inset: 0;
+                z-index: -1;
+                pointer-events: none;
+                background-image:
+                    linear-gradient(to right, var(--grid-glow-color) 1px, transparent 1px),
+                    linear-gradient(to bottom, var(--grid-glow-color) 1px, transparent 1px);
+                background-size: 40px 40px;
+                opacity: 0.55;
+                mask-image: radial-gradient(circle 140px at var(--mx, -200px) var(--my, -200px), black 5%, transparent 75%);
+                -webkit-mask-image: radial-gradient(circle 140px at var(--mx, -200px) var(--my, -200px), black 5%, transparent 75%);
+            }
+        }
+
         /* Layout */
         main {
             flex: 1;
@@ -100,7 +120,7 @@
 
         .container {
             width: 100%;
-            max-width: 600px;
+            max-width: 760px;
             text-align: center;
         }
 
@@ -123,34 +143,62 @@
             color: var(--gray-500);
             margin-bottom: 3rem;
             font-weight: 400;
-            max-width: 80%;
+            max-width: 100%;
             margin-left: auto;
             margin-right: auto;
+            text-wrap: balance;
         }
 
-        /* Action */
+        /* Typed custom properties — enables smooth interpolation of the spotlight position */
+        @property --btn-mx {
+            syntax: '<length>';
+            inherits: false;
+            initial-value: -200px;
+        }
+
+        @property --btn-my {
+            syntax: '<length>';
+            inherits: false;
+            initial-value: -200px;
+        }
+
+        /* Action — cursor-reactive polished surface */
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background-color: var(--fg);
             color: var(--bg);
             font-weight: 600;
             font-size: 1rem;
             padding: 0.875rem 2rem;
             border-radius: 9999px;
             text-decoration: none;
-            transition: transform 0.2s, opacity 0.2s;
             border: 1px solid var(--fg);
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+            background:
+                radial-gradient(circle 80px at var(--btn-mx) var(--btn-my),
+                    color-mix(in oklab, var(--fg) 55%, var(--bg) 45%) 0%,
+                    var(--fg) 70%);
+            transition: box-shadow 0.3s ease;
         }
 
         .btn:hover {
-            opacity: 0.9;
-            transform: translateY(-1px);
+            box-shadow:
+                0 0 0 2px color-mix(in oklab, var(--fg) 14%, transparent),
+                0 4px 14px -2px color-mix(in oklab, var(--fg) 55%, transparent);
         }
 
         .btn:active {
-            transform: translateY(0);
+            box-shadow:
+                0 0 0 2px color-mix(in oklab, var(--fg) 18%, transparent),
+                0 2px 8px -2px color-mix(in oklab, var(--fg) 45%, transparent);
+        }
+
+        .btn:focus-visible {
+            outline: 2px solid color-mix(in oklab, var(--fg) 60%, transparent);
+            outline-offset: 4px;
         }
 
         /* Footer / Trust */
@@ -199,6 +247,7 @@
 
 <body>
     <div class="bg-grid"></div>
+    <div class="bg-grid-glow" aria-hidden="true"></div>
 
     <main>
         <div class="container">
@@ -292,6 +341,43 @@
             }
             window.addEventListener('resize', checkScroll);
             checkScroll(); // Initial check
+
+            // Cursor-reactive effects — only on devices with a real pointer
+            if (window.matchMedia('(hover: hover)').matches) {
+                const glow = document.querySelector('.bg-grid-glow');
+                if (glow) {
+                    let rafId = 0;
+                    let lastX = 0;
+                    let lastY = 0;
+                    document.addEventListener('pointermove', (e) => {
+                        lastX = e.clientX;
+                        lastY = e.clientY;
+                        if (!rafId) {
+                            rafId = requestAnimationFrame(() => {
+                                glow.style.setProperty('--mx', lastX + 'px');
+                                glow.style.setProperty('--my', lastY + 'px');
+                                rafId = 0;
+                            });
+                        }
+                    });
+                }
+
+                // Button spotlight — tracks pointer inside the button surface
+                let btnRaf = 0;
+                contactBtn.addEventListener('pointermove', (e) => {
+                    if (btnRaf) return;
+                    btnRaf = requestAnimationFrame(() => {
+                        const rect = contactBtn.getBoundingClientRect();
+                        contactBtn.style.setProperty('--btn-mx', `${e.clientX - rect.left}px`);
+                        contactBtn.style.setProperty('--btn-my', `${e.clientY - rect.top}px`);
+                        btnRaf = 0;
+                    });
+                });
+                contactBtn.addEventListener('pointerleave', () => {
+                    contactBtn.style.removeProperty('--btn-mx');
+                    contactBtn.style.removeProperty('--btn-my');
+                });
+            }
         })();
     </script>
 </body>
