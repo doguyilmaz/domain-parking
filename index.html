@@ -9,9 +9,9 @@
     <link rel="canonical" href="/">
     <link rel="icon" type="image/svg+xml"
         href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💎%3C/text%3E%3C/svg%3E">
-    <!-- To change favicon: Replace the href above with your image path or new data URI -->
     <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fafafa">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000">
 
     <meta property="og:type" content="website">
     <meta property="og:title" content="Domain for Sale">
@@ -30,7 +30,6 @@
 
         :root {
             --bg: #fafafa;
-            /* Subtle Off-White */
             --fg: #000000;
 
             /* Grid Color for Light Mode — neutral gray instead of pure black so lines don't read as inky */
@@ -39,8 +38,8 @@
             /* Hover-glow color — darker than ambient so the cursor highlight pops */
             --grid-glow-color: #171717;
 
+            --gray-500: #737373;
             --gray-gradient: #737373;
-            /* Professional Blue used inline / gradients now */
             --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
         }
 
@@ -53,6 +52,7 @@
                 --grid-opacity: 0.12;
                 /* Hover-glow color — pure white for dark mode */
                 --grid-glow-color: #ffffff;
+                --gray-500: #a1a1aa;
                 --gray-gradient: #a1a1aa;
             }
         }
@@ -63,12 +63,11 @@
             color: var(--fg);
             line-height: 1.5;
             height: 100vh;
-            /* Use d-vh for mobile browsers if supported, fallback to 100vh */
+            height: 100dvh;
             min-height: -webkit-fill-available;
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            /* Prevent accidental scroll on simpler views */
         }
 
         /* Ambient Background Grid - Clean, Tech feel */
@@ -83,7 +82,6 @@
             mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
             -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
             opacity: var(--grid-opacity);
-            /* Opacity controlled by variable */
             pointer-events: none;
         }
 
@@ -133,9 +131,9 @@
             margin-bottom: 1.5rem;
             background: linear-gradient(180deg, var(--fg) 0%, var(--gray-gradient) 100%);
             -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
             -webkit-text-fill-color: transparent;
-            /* Fallback */
-            color: var(--fg);
         }
 
         p.subtitle {
@@ -237,17 +235,18 @@
             text-decoration: underline;
             text-underline-offset: 2px;
         }
-
-        /* Utils */
-        .hidden {
-            display: none;
-        }
     </style>
 </head>
 
 <body>
     <div class="bg-grid"></div>
     <div class="bg-grid-glow" aria-hidden="true"></div>
+
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <symbol id="icon-check" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+        </symbol>
+    </svg>
 
     <main>
         <div class="container">
@@ -260,24 +259,15 @@
 
             <div class="features">
                 <div class="feature-item">
-                    <svg class="feature-icon" viewBox="0 0 24 24">
-                        <path
-                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-                    </svg>
+                    <svg class="feature-icon" aria-hidden="true"><use href="#icon-check" /></svg>
                     <span>Secure Transfer</span>
                 </div>
                 <div class="feature-item">
-                    <svg class="feature-icon" viewBox="0 0 24 24">
-                        <path
-                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-                    </svg>
+                    <svg class="feature-icon" aria-hidden="true"><use href="#icon-check" /></svg>
                     <span>Verified Owner</span>
                 </div>
                 <div class="feature-item">
-                    <svg class="feature-icon" viewBox="0 0 24 24">
-                        <path
-                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-                    </svg>
+                    <svg class="feature-icon" aria-hidden="true"><use href="#icon-check" /></svg>
                     <span>Instant Response</span>
                 </div>
             </div>
