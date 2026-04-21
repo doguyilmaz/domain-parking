@@ -1,9 +1,10 @@
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Cache-Control = "public, max-age=3600, must-revalidate"
+[build]
+  publish = "."
 
-[[headers]]
-  for = "/manifest.json"
-  [headers.values]
-    Cache-Control = "public, max-age=86400"
+# Catch-all so the parking page renders for any path the visitor types.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Headers live in the _headers file (shared with Cloudflare).

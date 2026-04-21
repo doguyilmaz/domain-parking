@@ -1,0 +1,25 @@
+{
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/manifest.json", "/robots.txt", "/*.{ico,svg,png,jpg,jpeg,webp,avif}"]
+  },
+  "globalHeaders": {
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Permissions-Policy": "camera=(), microphone=(), geolocation=(), browsing-topics=()",
+    "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+    "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'",
+    "Cache-Control": "public, max-age=3600, must-revalidate"
+  },
+  "routes": [
+    {
+      "route": "/manifest.json",
+      "headers": { "Cache-Control": "public, max-age=86400" }
+    },
+    {
+      "route": "/robots.txt",
+      "headers": { "Cache-Control": "public, max-age=86400" }
+    }
+  ]
+}

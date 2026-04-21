@@ -12,6 +12,7 @@ yarn-error.log
 # Editors
 .vscode/
 .idea/
+.claude/
 *.swp
 *.swo
 

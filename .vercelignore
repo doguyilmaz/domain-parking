@@ -1,0 +1,9 @@
+netlify.toml
+firebase.json
+wrangler.toml
+staticwebapp.config.json
+_headers
+.nojekyll
+README.md
+LICENSE
+.gitignore

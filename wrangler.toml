@@ -3,3 +3,5 @@ compatibility_date = "2025-12-29"
 
 [assets]
 directory = "."
+# Any path the visitor types serves the parking page (e.g. /contact, /buy).
+not_found_handling = "single-page-application"
